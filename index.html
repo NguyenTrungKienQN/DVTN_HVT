@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đoàn Viên Số – Văn Minh Trên Mạng | THPT Hoàng Văn Thụ</title>
+  
+  <style>
+    /* ================= SYSTEM RESET & BASE STYLES ================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #1e293b;
+      background-color: #f8fafc;
+      line-height: 1.6;
+    }
+
+    body {
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1160px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      background: linear-gradient(90deg, #0056b3, #0284c7, #2563eb);
+      color: #ffffff;
+      font-size: 0.825rem;
+      padding: 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-badge {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 3px 8px;
+      border-radius: 9999px;
+      font-weight: 600;
+      margin-right: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+      height: 64px;
+      display: flex;
+      align-items: center;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 0.925rem;
+      font-weight: 600;
+      color: #475569;
+    }
+    .nav-links a:hover {
+      color: #0056b3;
+      transition: color 0.2s;
+    }
+    .btn-pledge-nav {
+      background: linear-gradient(135deg, #0056b3, #0284c7);
+      color: white;
+      font-weight: 700;
+      font-size: 0.875rem;
+      padding: 9px 18px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0, 86, 179, 0.25);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+    .btn-pledge-nav:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0, 86, 179, 0.35);
+    }
+    .counter-badge {
+      background: rgba(255, 255, 255, 0.25);
+      padding: 2px 7px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      padding: 64px 0 80px;
+      text-align: center;
+      background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(2, 132, 199, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      color: #0f172a;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+    .hero-title-gradient {
+      background: linear-gradient(135deg, #0056b3, #0284c7, #4f46e5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .slogan-card {
+      max-width: 760px;
+      margin: 0 auto 24px;
+      background: #ffffff;
+      border: 1px solid #dbeafe;
+      border-radius: 18px;
+      padding: 16px 24px;
+      box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .slogan-text {
+      font-size: clamp(1.2rem, 3vw, 1.7rem);
+      font-weight: 800;
+      color: #0056b3;
+    }
+    .school-desc {
+      font-size: 1.1rem;
+      color: #475569;
+      max-width: 680px;
+      margin: 0 auto 32px;
+    }
+    .school-name-highlight {
+      color: #0056b3;
+      font-weight: 800;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .btn-primary-lg {
+      background: linear-gradient(135deg, #0056b3, #0284c7);
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 800;
+      padding: 16px 36px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 86, 179, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.25s ease;
+    }
+    .btn-primary-lg:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 14px 30px rgba(0, 86, 179, 0.4);
+    }
+    .btn-secondary-lg {
+      background: #ffffff;
+      color: #334155;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 16px 28px;
+      border-radius: 16px;
+      border: 1px solid #cbd5e1;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+    .btn-secondary-lg:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+      color: #0056b3;
+    }
+    .hashtags-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .hashtag-pill {
+      background: #eff6ff;
+      color: #0056b3;
+      border: 1px solid #bfdbfe;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hashtag-pill:hover {
+      background: #dbeafe;
+      transform: translateY(-1px);
+    }
+
+    /* Stats Grid */
+    .hero-stats {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid #e2e8f0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #0056b3;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    /* Section Utilities */
+    .section {
+      padding: 80px 0;
+    }
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 50px;
+    }
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 800;
+      color: #0056b3;
+      background: #eff6ff;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 1.05rem;
+      color: #475569;
+      line-height: 1.6;
+    }
+    .title-line {
+      width: 50px;
+      height: 4px;
+      background: #0056b3;
+      margin: 12px auto;
+      border-radius: 99px;
+    }
+
+    /* Section 2: Cards Grid */
+    .cards-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .feature-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 24px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 36px rgba(0, 86, 179, 0.1);
+      border-color: #bfdbfe;
+    }
+    .card-icon-box {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+    .card-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+    .card-text {
+      font-size: 0.95rem;
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .card-footer-tip {
+      border-top: 1px solid #f1f5f9;
+      padding-top: 14px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Quote Box */
+    .quote-box {
+      margin-top: 48px;
+      background: linear-gradient(135deg, #eff6ff, #f8fafc);
+      border-left: 4px solid #0056b3;
+      padding: 24px 28px;
+      border-radius: 0 16px 16px 0;
+      font-size: 1.05rem;
+      color: #1e293b;
+      font-style: italic;
+    }
+    .quote-author {
+      margin-top: 8px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #0056b3;
+      font-style: normal;
+    }
+
+    /* Section 3: 5 Golden Rules Grid */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .rule-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+    .rule-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 86, 179, 0.08);
+      border-color: #93c5fd;
+    }
+    .rule-card-wide {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+      border-color: #bbf7d0;
+    }
+    .rule-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .rule-pill {
+      font-size: 0.75rem;
+      font-weight: 900;
+      padding: 4px 10px;
+      border-radius: 99px;
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+    .rule-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+    .rule-desc {
+      font-size: 0.95rem;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+    .rule-highlight {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    /* Section 4: Do's & Don'ts Table */
+    .comparison-table {
+      background: #ffffff;
+      border-radius: 24px;
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04);
+    }
+    .comp-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+    .comp-header-do {
+      background: linear-gradient(135deg, #059669, #10b981);
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .comp-header-dont {
+      background: linear-gradient(135deg, #dc2626, #ef4444);
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .comp-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid #f1f5f9;
+      transition: background 0.2s;
+    }
+    .comp-row:hover {
+      background: #f8fafc;
+    }
+    .comp-cell {
+      padding: 20px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .comp-cell-dont {
+      border-left: 1px solid #f1f5f9;
+      background: rgba(254, 242, 242, 0.25);
+    }
+    .cell-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .cell-num-green {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    .cell-num-red {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+    .cell-title {
+      font-weight: 800;
+      margin-bottom: 3px;
+      font-size: 0.95rem;
+    }
+    .cell-title-green { color: #065f46; }
+    .cell-title-red { color: #991b1b; }
+    .cell-sub {
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+
+    /* Section 5: Troubleshooting 3 Steps */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .step-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 24px;
+      padding: 32px 24px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s;
+    }
+    .step-card:hover {
+      border-color: #0056b3;
+      transform: translateY(-4px);
+    }
+    .step-badge {
+      font-size: 0.75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #0056b3;
+      margin-bottom: 6px;
+    }
+    .step-title {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #0f172a;
+      margin-bottom: 12px;
+    }
+    .step-desc {
+      font-size: 0.95rem;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .step-tip {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    /* Support Callout */
+    .support-callout {
+      margin-top: 56px;
+      background: linear-gradient(135deg, #0056b3, #1d4ed8, #4338ca);
+      color: #ffffff;
+      padding: 40px 24px;
+      border-radius: 28px;
+      text-align: center;
+      box-shadow: 0 16px 40px rgba(0, 86, 179, 0.25);
+    }
+    .support-title {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+    .support-desc {
+      font-size: 1.05rem;
+      color: #e0e7ff;
+      max-width: 650px;
+      margin: 0 auto 24px;
+    }
+    .support-pills {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .support-pill {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      padding: 8px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.875rem;
+    }
+
+    /* Bottom CTA */
+    .cta-banner {
+      background: linear-gradient(180deg, #ffffff 0%, #eff6ff 100%);
+      padding: 80px 0;
+      text-align: center;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    /* Footer */
+    .footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 60px 0 30px;
+      font-size: 0.875rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-title {
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .footer-bottom {
+      border-top: 1px solid #1e293b;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.8rem;
+    }
+
+    /* Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-box {
+      background: #ffffff;
+      width: 100%;
+      max-width: 520px;
+      border-radius: 24px;
+      padding: 32px 28px;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      font-size: 1.4rem;
+      color: #94a3b8;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f1f5f9;
+    }
+    .modal-close:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+    .form-group {
+      margin-bottom: 16px;
+      text-align: left;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid #cbd5e1;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: #0056b3;
+      box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.15);
+    }
+    .form-input-disabled {
+      background: #f1f5f9;
+      color: #475569;
+      cursor: not-allowed;
+    }
+    .commit-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 0.85rem;
+      color: #1e3a8a;
+      margin-bottom: 20px;
+    }
+
+    /* Certificate Card */
+    .cert-card {
+      background: linear-gradient(135deg, #0b1e36 0%, #003666 50%, #001f3f 100%);
+      color: #ffffff;
+      border: 4px solid #facc15;
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      margin: 16px 0;
+      position: relative;
+    }
+    .cert-school-name {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #facc15;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .cert-heading {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin: 6px 0 10px;
+      letter-spacing: 0.5px;
+    }
+    .cert-student-name {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #facc15;
+      text-transform: uppercase;
+      margin: 8px 0;
+    }
+    .cert-class {
+      font-size: 0.85rem;
+      color: #bfdbfe;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .cert-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: #93c5fd;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      z-index: 2000;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      display: none;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .comp-header, .comp-row { grid-template-columns: 1fr; }
+      .comp-cell-dont { border-left: none; border-top: 1px solid #f1f5f9; }
+      .hero { padding: 40px 0 60px; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= TOP NOTIFICATION ================= -->
+  <div class="top-bar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <div>
+        <span class="top-badge">✨ Năm Chuyển Đổi Số</span>
+        <span>Chiến dịch văn hóa ứng xử trên không gian mạng của tuổi trẻ học đường</span>
+      </div>
+      <div style="font-weight: 600; font-size: 0.8rem;" id="topbarSchool">
+        Trường THPT Hoàng Văn Thụ
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <nav class="nav-links">
+        <a href="#ly-do">Vì sao cần quy tắc?</a>
+        <a href="#5-quy-tac">5 Quy tắc vàng</a>
+        <a href="#nen-khong-nen">Nên & Không nên</a>
+        <a href="#xu-ly-su-co">Khi gặp sự cố</a>
+      </nav>
+
+      <div style="margin-left: auto;">
+        <button class="btn-pledge-nav" onclick="openModal()">
+          <span>✍️ KÝ CAM KẾT</span>
+          <span class="counter-badge" id="navCounter">1,254+</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= KHỐI 1 – HERO (ĐẦU TRANG) ================= -->
+  <section class="hero">
+    <div class="container">
+      
+      <div class="hero-tag">
+        <span>🇻🇳</span> PHONG TRÀO TUỔI TRẺ TIÊN PHONG TRÊN KHÔNG GIAN SỐ
+      </div>
+
+      <h1 class="hero-title">
+        ĐOÀN VIÊN SỐ <br>
+        <span class="hero-title-gradient">– VĂN MINH TRÊN MẠNG</span>
+      </h1>
+
+      <div class="slogan-card">
+        <span style="font-size: 1.5rem;">✨</span>
+        <div class="slogan-text">“Nghĩ trước khi đăng – Tử tế trước khi gửi”</div>
+        <span style="font-size: 1.5rem;">✨</span>
+      </div>
+
+      <p class="school-desc">
+        Bộ quy tắc ứng xử trên không gian mạng dành cho đoàn viên 
+        <span onclick="editSchoolName()" title="Bấm để thay đổi tên trường nếu cần" style="cursor: pointer; background: #e0f2fe; border: 1px dashed #0284c7; padding: 2px 10px; border-radius: 8px; display: inline-flex; align-items: center; gap: 5px;">
+          <strong class="school-name-highlight" id="displaySchoolName">Trường THPT Hoàng Văn Thụ</strong>
+          <span style="font-size: 0.85rem;" title="Chỉnh sửa">✏️</span>
+        </span>
+      </p>
+
+      <div class="hero-cta">
+        <button class="btn-primary-lg" onclick="openModal()">
+          <span>✍️ TÔI CAM KẾT</span>
+          <span style="font-size: 1.2rem;">➔</span>
+        </button>
+        <a href="#5-quy-tac" class="btn-secondary-lg">
+          <span>📖 Khám phá 5 Quy tắc vàng</span>
+        </a>
+      </div>
+
+      <div class="hashtags-row">
+        <span style="font-size: 0.85rem; font-weight: 700; color: #64748b;">Hashtag lan tỏa:</span>
+        <button class="hashtag-pill" onclick="copyTag('#DoanVienSo')">#DoanVienSo 📋</button>
+        <button class="hashtag-pill" onclick="copyTag('#VanMinhTrenMang')">#VanMinhTrenMang 📋</button>
+        <button class="hashtag-pill" onclick="copyTag('#THPTHoangVanThu')">#THPTHoangVanThu 📋</button>
+      </div>
+
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num" id="statCount">1,254</div>
+          <div class="stat-label">Lượt ký cam kết</div>
+        </div>
+        <div>
+          <div class="stat-num" style="color: #0284c7;">100%</div>
+          <div class="stat-label">Chi đoàn hưởng ứng</div>
+        </div>
+        <div>
+          <div class="stat-num" style="color: #4f46e5;">5/5</div>
+          <div class="stat-label">Quy tắc vàng chuẩn mực</div>
+        </div>
+        <div>
+          <div class="stat-num" style="color: #059669;">24/7</div>
+          <div class="stat-label">Đồng hành & Lắng nghe</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= KHỐI 2 – VÌ SAO CẦN BỘ QUY TẮC NÀY? ================= -->
+  <section id="ly-do" class="section" style="background: #ffffff;">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="section-eyebrow">Nhận Thức & Trách Nhiệm</span>
+        <h2 class="section-title">Mỗi cú nhấp chuột đều có trách nhiệm</h2>
+        <div class="title-line"></div>
+        <p class="section-desc">
+          Mạng xã hội là <strong>“lớp học thứ hai”</strong> của chúng ta. Mỗi bài đăng, bình luận hay lượt chia sẻ đều phản ánh hình ảnh của bản thân, của Đoàn và của nhà trường. Là đoàn viên, chúng ta không chỉ dùng mạng, mà còn làm gương trên mạng.
+        </p>
+      </div>
+
+      <div class="cards-grid-3">
+        
+        <!-- Thẻ 1 -->
+        <div class="feature-card">
+          <div>
+            <div class="card-icon-box" style="background: #eff6ff;">📱</div>
+            <div class="card-tag" style="color: #0056b3;">Thói quen sử dụng</div>
+            <h3 class="card-title">Hằng ngày, học sinh dành nhiều giờ trên mạng xã hội</h3>
+            <p class="card-text">
+              Trung bình từ <strong>4 – 6 giờ/ngày</strong> được học sinh sử dụng cho mạng xã hội. Không gian mạng đã trở thành môi trường sống thứ hai thực sự, nơi tương tác và định hình tính cách.
+            </p>
+          </div>
+          <div class="card-footer-tip" style="color: #0056b3;">
+            ⏱️ Chiếm hơn 1/3 quỹ thời gian thức mỗi ngày
+          </div>
+        </div>
+
+        <!-- Thẻ 2 -->
+        <div class="feature-card">
+          <div>
+            <div class="card-icon-box" style="background: #fffbeb;">⚠️</div>
+            <div class="card-tag" style="color: #d97706;">Cảnh báo rủi ro</div>
+            <h3 class="card-title">Tin giả lan nhanh hơn tin thật</h3>
+            <p class="card-text">
+              Các thông tin sai lệch, giật gân thường kích thích cảm xúc tò mò và lan truyền với tốc độ chóng mặt. Nếu thiếu kỹ năng kiểm chứng, bạn rất dễ vô tình tiếp tay cho tin đồn độc hại.
+            </p>
+          </div>
+          <div class="card-footer-tip" style="color: #d97706;">
+            🛡️ Kiểm chứng là tấm khiên bảo vệ bạn
+          </div>
+        </div>
+
+        <!-- Thẻ 3 -->
+        <div class="feature-card">
+          <div>
+            <div class="card-icon-box" style="background: #fef2f2;">💬</div>
+            <div class="card-tag" style="color: #dc2626;">Sức mạnh ngôn từ</div>
+            <h3 class="card-title">Một bình luận có thể làm người khác tổn thương rất lâu</h3>
+            <p class="card-text">
+              Sau mỗi tài khoản là một con người thật với cảm xúc thật. Một lời công kích hay bình luận ác ý tưởng như vô hại có thể để lại vết thương tâm lý kéo dài nhiều năm cho bạn bè.
+            </p>
+          </div>
+          <div class="card-footer-tip" style="color: #dc2626;">
+            ❤️ Tử tế là lựa chọn của người có văn hóa
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Trích dẫn định hướng -->
+      <div class="quote-box">
+        “Mỗi đoàn viên là một tuyên truyền viên tích cực. Trước khi bấm nút Like, Share hay Comment, hãy luôn tự hỏi: Thông tin này có đúng không? Có ích cho mọi người không? Có làm tổn thương ai không?”
+        <div class="quote-author">— Ban Chấp Hành Đoàn Trường THPT Hoàng Văn Thụ</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= KHỐI 3 – 5 QUY TẮC VÀNG ================= -->
+  <section id="5-quy-tac" class="section" style="background: #f8fafc;">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="section-eyebrow">Cốt Lõi Hành Vi</span>
+        <h2 class="section-title">5 Quy tắc vàng của đoàn viên số</h2>
+        <div class="title-line"></div>
+        <p class="section-desc">
+          5 kim chỉ nam giúp đoàn viên THPT Hoàng Văn Thụ tự tin, vững vàng và trở thành những công dân số văn minh, thông thái.
+        </p>
+      </div>
+
+      <div class="rules-grid">
+        
+        <!-- Quy tắc 1 -->
+        <div class="rule-card">
+          <div>
+            <div class="rule-header">
+              <span style="font-size: 2rem;">🔍</span>
+              <span class="rule-pill">QUY TẮC 01</span>
+            </div>
+            <h3 class="rule-title">Kiểm chứng trước khi chia sẻ</h3>
+            <p class="rule-desc">
+              Không đăng, không chia sẻ tin chưa rõ nguồn. Nhận diện các trang tin giả mạo, luôn đối chiếu với thông báo chính thống từ nhà trường và cơ quan chức năng.
+            </p>
+          </div>
+          <div class="rule-highlight">
+            🎯 “Tin giả dừng lại ở tay bạn.”
+          </div>
+        </div>
+
+        <!-- Quy tắc 2 -->
+        <div class="rule-card">
+          <div>
+            <div class="rule-header">
+              <span style="font-size: 2rem;">🤝</span>
+              <span class="rule-pill" style="background: #dcfce7; color: #15803d;">QUY TẮC 02</span>
+            </div>
+            <h3 class="rule-title">Tôn trọng khi bình luận</h3>
+            <p class="rule-desc">
+              Phản biện bằng lý lẽ, không dùng lời lẽ miệt thị, xúc phạm hay bạo lực ngôn từ. Lịch sự và tôn trọng sự khác biệt của người khác.
+            </p>
+          </div>
+          <div class="rule-highlight">
+            🎯 “Tranh luận để hiểu nhau, không phải để hạ bệ.”
+          </div>
+        </div>
+
+        <!-- Quy tắc 3 -->
+        <div class="rule-card">
+          <div>
+            <div class="rule-header">
+              <span style="font-size: 2rem;">🔒</span>
+              <span class="rule-pill" style="background: #fef3c7; color: #b45309;">QUY TẮC 03</span>
+            </div>
+            <h3 class="rule-title">Bảo vệ thông tin cá nhân</h3>
+            <p class="rule-desc">
+              Không đăng thông tin, hình ảnh riêng tư của mình và người khác khi chưa được đồng ý. Cảnh giác với các đường link lạ, bảo vệ mật khẩu an toàn.
+            </p>
+          </div>
+          <div class="rule-highlight">
+            🎯 “Quyền riêng tư là bất khả xâm phạm.”
+          </div>
+        </div>
+
+        <!-- Quy tắc 4 -->
+        <div class="rule-card">
+          <div>
+            <div class="rule-header">
+              <span style="font-size: 2rem;">🛡️</span>
+              <span class="rule-pill" style="background: #fee2e2; color: #b91c1c;">QUY TẮC 04</span>
+            </div>
+            <h3 class="rule-title">Nói không với bắt nạt trên mạng</h3>
+            <p class="rule-desc">
+              Không tham gia, không cổ vũ hội nhóm bôi nhọ, cô lập bạn bè. Biết lên tiếng và kịp thời hỗ trợ, bảo vệ bạn bị ảnh hưởng.
+            </p>
+          </div>
+          <div class="rule-highlight">
+            🎯 “Dũng cảm lên tiếng trước sự bất công.”
+          </div>
+        </div>
+
+        <!-- Quy tắc 5 (Full width) -->
+        <div class="rule-card rule-card-wide">
+          <div>
+            <div class="rule-header">
+              <span style="font-size: 2.2rem;">🌱</span>
+              <span class="rule-pill" style="background: #ccfbf1; color: #0f766e;">QUY TẮC 05</span>
+            </div>
+            <h3 class="rule-title" style="color: #065f46;">Lan tỏa điều tích cực</h3>
+            <p class="rule-desc">
+              Chia sẻ hoạt động Đoàn, gương người tốt việc tốt, kiến thức bổ ích. Tôn trọng bản quyền tác giả và tuân thủ pháp luật về an ninh mạng. Cùng nhau xây dựng không gian mạng trong lành, đầy ắp năng lượng thanh xuân.
+            </p>
+          </div>
+          <div class="rule-highlight" style="background: #ecfdf5; border-color: #a7f3d0; color: #065f46;">
+            🎯 “Lấy cái đẹp dẹp cái xấu – Phủ xanh mạng xã hội bằng điều tử tế.”
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= KHỐI 4 – NÊN VÀ KHÔNG NÊN ================= -->
+  <section id="nen-khong-nen" class="section" style="background: #ffffff;">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="section-eyebrow">Đối Chiếu Hành Động</span>
+        <h2 class="section-title">Hành động nhỏ – Khác biệt lớn</h2>
+        <div class="title-line"></div>
+        <p class="section-desc">
+          Bảng đối chiếu cụ thể giúp bạn dễ dàng nhận biết và rèn luyện thói quen ứng xử văn minh mỗi ngày:
+        </p>
+      </div>
+
+      <div class="comparison-table">
+        <div class="comp-header">
+          <div class="comp-header-do">
+            <span style="font-size: 1.4rem;">✅</span>
+            <span>NÊN LÀM (Đoàn viên văn minh)</span>
+          </div>
+          <div class="comp-header-dont">
+            <span style="font-size: 1.4rem;">❌</span>
+            <span>KHÔNG NÊN (Cần tránh tuyệt đối)</span>
+          </div>
+        </div>
+
+        <!-- Row 1 -->
+        <div class="comp-row">
+          <div class="comp-cell">
+            <span class="cell-num cell-num-green">1</span>
+            <div>
+              <div class="cell-title cell-title-green">Kiểm tra nguồn tin trước khi chia sẻ</div>
+              <div class="cell-sub">Xác thực kỹ thông tin từ báo chính thống hoặc thông báo nhà trường.</div>
+            </div>
+          </div>
+          <div class="comp-cell comp-cell-dont">
+            <span class="cell-num cell-num-red">1</span>
+            <div>
+              <div class="cell-title cell-title-red">Share tin "nghe nói", tin giật gân</div>
+              <div class="cell-sub">Lan truyền tin đồn thất thiệt, clip cắt ghép câu view.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="comp-row">
+          <div class="comp-cell">
+            <span class="cell-num cell-num-green">2</span>
+            <div>
+              <div class="cell-title cell-title-green">Xin phép trước khi đăng ảnh người khác</div>
+              <div class="cell-sub">Tôn trọng quyền riêng tư cá nhân của thầy cô và bạn bè.</div>
+            </div>
+          </div>
+          <div class="comp-cell comp-cell-dont">
+            <span class="cell-num cell-num-red">2</span>
+            <div>
+              <div class="cell-title cell-title-red">Đăng ảnh, clip "chế" khi chưa được đồng ý</div>
+              <div class="cell-sub">Dìm hàng bạn bè, đăng ảnh dìm làm trò đùa mua vui gây tổn thương.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="comp-row">
+          <div class="comp-cell">
+            <span class="cell-num cell-num-green">3</span>
+            <div>
+              <div class="cell-title cell-title-green">Góp ý riêng tư, lịch sự</div>
+              <div class="cell-sub">Nhắn tin riêng chân thành khi thấy bạn có thiếu sót để cùng sửa chữa.</div>
+            </div>
+          </div>
+          <div class="comp-cell comp-cell-dont">
+            <span class="cell-num cell-num-red">3</span>
+            <div>
+              <div class="cell-title cell-title-red">Chê bai, "đấu tố" công khai trên nhóm lớp</div>
+              <div class="cell-sub">Đăng bài bóc phốt, mỉa mai, làm bẽ mặt người khác trước đám đông.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="comp-row">
+          <div class="comp-cell">
+            <span class="cell-num cell-num-green">4</span>
+            <div>
+              <div class="cell-title cell-title-green">Ghi nguồn khi dùng hình ảnh, nội dung</div>
+              <div class="cell-sub">Tôn trọng chất xám, công sức của tác giả bằng việc trích nguồn rõ ràng.</div>
+            </div>
+          </div>
+          <div class="comp-cell comp-cell-dont">
+            <span class="cell-num cell-num-red">4</span>
+            <div>
+              <div class="cell-title cell-title-red">Sao chép, đạo văn, vi phạm bản quyền</div>
+              <div class="cell-sub">Lấy bài viết, ý tưởng của người khác rồi nhận vơ là của mình.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 5 -->
+        <div class="comp-row">
+          <div class="comp-cell">
+            <span class="cell-num cell-num-green">5</span>
+            <div>
+              <div class="cell-title cell-title-green">Báo cáo nội dung xấu, độc hại</div>
+              <div class="cell-sub">Chủ động bấm nút Report khi gặp nội dung bạo lực, phản cảm hoặc lừa đảo.</div>
+            </div>
+          </div>
+          <div class="comp-cell comp-cell-dont">
+            <span class="cell-num cell-num-red">5</span>
+            <div>
+              <div class="cell-title cell-title-red">Im lặng hoặc "thả tim" cho nội dung tiêu cực</div>
+              <div class="cell-sub">Tương tác vô tâm khiến thuật toán tiếp tục lan tỏa điều xấu.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 6 -->
+        <div class="comp-row">
+          <div class="comp-cell">
+            <span class="cell-num cell-num-green">6</span>
+            <div>
+              <div class="cell-title cell-title-green">Giữ bình tĩnh, ứng xử có văn hóa</div>
+              <div class="cell-sub">Luôn suy nghĩ chín chắn trước khi gõ phím, giữ gìn hình ảnh học sinh.</div>
+            </div>
+          </div>
+          <div class="comp-cell comp-cell-dont">
+            <span class="cell-num cell-num-red">6</span>
+            <div>
+              <div class="cell-title cell-title-red">Cãi vã, thách thức, đăng bài lúc nóng giận</div>
+              <div class="cell-sub">Dùng mạng để xả giận nhất thời, gây ra hậu quả đáng tiếc.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= KHỐI 5 – KHI GẶP SỰ CỐ TRÊN MẠNG ================= -->
+  <section id="xu-ly-su-co" class="section" style="background: #f8fafc;">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="section-eyebrow">Kỹ Năng Thực Hành</span>
+        <h2 class="section-title">Gặp rắc rối? Hãy nhớ 3 bước</h2>
+        <div class="title-line"></div>
+        <p class="section-desc">
+          Khi gặp quấy rối, bôi nhọ, bị lập nick giả hoặc công kích trên mạng, hãy giữ bình tĩnh và thực hiện ngay 3 bước sau:
+        </p>
+      </div>
+
+      <div class="steps-grid">
+        
+        <!-- Step 1 -->
+        <div class="step-card">
+          <div>
+            <div style="font-size: 2.2rem; margin-bottom: 12px;">✋</div>
+            <div class="step-badge">BƯỚC 1</div>
+            <h3 class="step-title">DỪNG LẠI</h3>
+            <p class="step-desc">
+              <strong>Không phản hồi, không đáp trả bằng cảm xúc.</strong> Càng phản ứng lúc nóng giận, đối phương càng có cớ leo thang công kích. Hãy tạm thời rời khỏi màn hình.
+            </p>
+          </div>
+          <div class="step-tip">
+            💡 Mẹo: Hít thở sâu và uống một ly nước để lấy lại bình tĩnh.
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card">
+          <div>
+            <div style="font-size: 2.2rem; margin-bottom: 12px;">📸</div>
+            <div class="step-badge">BƯỚC 2</div>
+            <h3 class="step-title">LƯU BẰNG CHỨNG</h3>
+            <p class="step-desc">
+              <strong>Chụp màn hình tin nhắn, bài đăng, tên tài khoản và thời gian.</strong> Đừng vội xóa cuộc trò chuyện vì đây là căn cứ xác thực quan trọng nhất để nhà trường bảo vệ bạn.
+            </p>
+          </div>
+          <div class="step-tip">
+            💡 Mẹo: Nhớ lưu cả đường link trang cá nhân của đối tượng.
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card">
+          <div>
+            <div style="font-size: 2.2rem; margin-bottom: 12px;">📢</div>
+            <div class="step-badge">BƯỚC 3</div>
+            <h3 class="step-title">BÁO CÁO</h3>
+            <p class="step-desc">
+              <strong>Báo cho Ban chấp hành chi đoàn, giáo viên chủ nhiệm hoặc dùng nút "Báo cáo" của nền tảng.</strong> Đồng thời chặn (block) đối tượng để chấm dứt sự phiền hà.
+            </p>
+          </div>
+          <div class="step-tip">
+            💡 Mẹo: Đừng giấu một mình, thầy cô luôn ở bên cạnh bạn.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Support Callout -->
+      <div class="support-callout">
+        <div style="font-size: 2.5rem; margin-bottom: 10px;">🤝</div>
+        <h3 class="support-title">“Bạn không đơn độc. Đoàn luôn đồng hành cùng bạn.”</h3>
+        <p class="support-desc">
+          Bất kể chuyện gì xảy ra, tổ chức Đoàn trường và các thầy cô luôn sẵn sàng lắng nghe, bảo vệ sự an toàn và danh dự của bạn.
+        </p>
+        <div class="support-pills">
+          <span class="support-pill">📞 Tổng đài Quốc gia BVTE: 111</span>
+          <span class="support-pill">🏫 Văn phòng Đoàn trường THPT Hoàng Văn Thụ</span>
+          <span class="support-pill">✉️ Hòm thư trợ giúp học đường</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= BANNER KÊU GỌI CAM KẾT ================= -->
+  <section class="cta-banner">
+    <div class="container">
+      <div style="font-size: 2.5rem; margin-bottom: 12px;">🎖️</div>
+      <h2 style="font-size: 2.2rem; font-weight: 900; color: #0f172a; margin-bottom: 12px;">
+        Cùng hành động vì một môi trường mạng văn minh!
+      </h2>
+      <p style="font-size: 1.05rem; color: #475569; max-width: 600px; margin: 0 auto 28px;">
+        Chỉ mất 30 giây để xác nhận cam kết và nhận ngay Giấy Chứng Nhận Đoàn Viên Số danh dự mang tên bạn.
+      </p>
+      <button class="btn-primary-lg" onclick="openModal()">
+        <span>✍️ KÝ CAM KẾT NGAY BÂY GIỜ</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-title">ĐOÀN VIÊN SỐ – VĂN MINH TRÊN MẠNG</div>
+          <p style="color: #64748b; line-height: 1.6;">
+            Chương trình rèn luyện văn hóa ứng xử số dành cho đoàn viên, thanh niên học sinh trường THPT Hoàng Văn Thụ.
+          </p>
+        </div>
+        <div>
+          <div class="footer-title">Khẩu hiệu hành động</div>
+          <p style="color: #cbd5e1; font-style: italic; margin-bottom: 10px;">
+            “Nghĩ trước khi đăng – Tử tế trước khi gửi”
+          </p>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="background: #1e293b; color: #94a3b8; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem;">#DoanVienSo</span>
+            <span style="background: #1e293b; color: #94a3b8; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem;">#VanMinhTrenMang</span>
+          </div>
+        </div>
+        <div>
+          <div class="footer-title">Liên hệ hỗ trợ</div>
+          <p style="color: #94a3b8; margin-bottom: 4px;">Đoàn TNCS Hồ Chí Minh - Đoàn trường THPT Hoàng Văn Thụ</p>
+          <p style="color: #94a3b8; margin-bottom: 4px;">Email: doantruong.thpthoangvanthu@edu.vn</p>
+          <p style="color: #64748b;">Đồng hành cùng học sinh vì một mái trường thân thiện, an toàn.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Đoàn trường THPT Hoàng Văn Thụ. Bộ quy tắc ứng xử trên không gian mạng.</div>
+        <div style="color: #64748b;">Phiên bản chính thức dành cho học sinh nhà trường ✨</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODAL KÝ CAM KẾT ================= -->
+  <div id="pledgeModal" class="modal-overlay">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+
+      <!-- Form Step -->
+      <div id="modalFormStep">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <div style="font-size: 2.5rem; margin-bottom: 8px;">✍️</div>
+          <h3 style="font-size: 1.5rem; font-weight: 900; color: #0f172a;">Cam Kết Đoàn Viên Số</h3>
+          <p style="font-size: 0.85rem; color: #64748b; margin-top: 4px;">
+            Điền thông tin để nhận Giấy Chứng Nhận Đoàn Viên Số danh dự
+          </p>
+        </div>
+
+        <form onsubmit="submitPledge(event)">
+          <div class="form-group">
+            <label class="form-label">Họ và tên của bạn <span style="color: #ef4444;">*</span></label>
+            <input type="text" id="inputName" class="form-input" required placeholder="Ví dụ: Nguyễn Văn An">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label">Chi đoàn / Lớp <span style="color: #ef4444;">*</span></label>
+              <input type="text" id="inputClass" class="form-input" required placeholder="Ví dụ: 11A1">
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label">Trường học</label>
+              <input type="text" id="inputSchool" class="form-input" value="Trường THPT Hoàng Văn Thụ" placeholder="Tên trường...">
+            </div>
+          </div>
+
+          <div class="commit-box">
+            <div style="font-weight: 800; margin-bottom: 6px;">📋 Tôi cam kết:</div>
+            <div>1. Nghĩ trước khi đăng – Tử tế trước khi gửi.</div>
+            <div>2. Không lan truyền tin giả, không bắt nạt trên mạng.</div>
+            <div>3. Luôn giữ gìn hình ảnh học sinh văn minh, tích cực.</div>
+          </div>
+
+          <button type="submit" class="btn-primary-lg" style="width: 100%; justify-content: center; padding: 14px; font-size: 1rem;">
+            <span>XÁC NHẬN KÝ CAM KẾT</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Certificate Step -->
+      <div id="modalCertStep" style="display: none; text-align: center;">
+        <div style="font-size: 2.5rem; margin-bottom: 4px;">🎉</div>
+        <h3 style="font-size: 1.3rem; font-weight: 900; color: #0f172a;">Hoàn thành cam kết xuất sắc!</h3>
+        <p style="font-size: 0.85rem; color: #64748b;">Chứng nhận danh dự dành riêng cho bạn:</p>
+
+        <div class="cert-card" id="certBox">
+          <div class="cert-school-name" id="certSchoolHeader">ĐOÀN TRƯỜNG THPT HOÀNG VĂN THỤ</div>
+          <div class="cert-heading">CHỨNG NHẬN ĐOÀN VIÊN SỐ</div>
+          <div style="width: 50px; height: 2px; background: #facc15; margin: 0 auto 10px;"></div>
+          
+          <div style="font-size: 0.8rem; color: #cbd5e1;">Chứng nhận đồng chí:</div>
+          <div class="cert-student-name" id="certName">NGUYỄN VĂN AN</div>
+          <div class="cert-class" id="certClass">Chi đoàn 11A1 – Trường THPT Hoàng Văn Thụ</div>
+
+          <p style="font-size: 0.75rem; color: #e2e8f0; font-style: italic; margin-bottom: 12px;">
+            “Đã ký cam kết thực hiện nếp sống văn minh trên không gian mạng và tích cực lan tỏa thông điệp tử tế.”
+          </p>
+
+          <div class="cert-footer">
+            <div>Số: DVS-2026/VN</div>
+            <div style="color: #facc15; font-weight: 700;">BAN CHẤP HÀNH ĐOÀN 🛡️</div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 16px;">
+          <button onclick="downloadCertificateImage()" class="btn-primary-lg" style="flex: 1.2; justify-content: center; padding: 12px; font-size: 0.9rem; background: linear-gradient(135deg, #059669, #10b981);">
+            💾 TẢI ẢNH CHỨNG NHẬN (PNG)
+          </button>
+          <button onclick="shareLink()" class="btn-secondary-lg" style="flex: 0.8; justify-content: center; padding: 12px; font-size: 0.85rem;">
+            📢 Chia sẻ
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">
+    <span>✅</span>
+    <span id="toastText">Đã sao chép!</span>
+  </div>
+
+  <!-- Canvas hiệu ứng pháo hoa thuần (Không phụ thuộc mạng) -->
+  <canvas id="fireworksCanvas" style="position: fixed; inset: 0; pointer-events: none; z-index: 1500; display: none;"></canvas>
+
+  <script>
+    // School Config: Mặc định là Trường THPT Hoàng Văn Thụ, không khóa cứng
+    const DEFAULT_SCHOOL = 'Trường THPT Hoàng Văn Thụ';
+    let currentSchool = localStorage.getItem('hvt_school_name') || DEFAULT_SCHOOL;
+
+    function updateSchoolUI() {
+      const displayElem = document.getElementById('displaySchoolName');
+      if (displayElem) displayElem.innerText = currentSchool;
+
+      const inputSchool = document.getElementById('inputSchool');
+      if (inputSchool) inputSchool.value = currentSchool;
+
+      const topbarSchool = document.getElementById('topbarSchool');
+      if (topbarSchool) topbarSchool.innerText = currentSchool;
+    }
+
+    function editSchoolName() {
+      const newName = prompt('Nhập tên trường học:', currentSchool);
+      if (newName && newName.trim() !== '') {
+        currentSchool = newName.trim();
+        localStorage.setItem('hvt_school_name', currentSchool);
+        updateSchoolUI();
+        showToast(`Đã đổi tên trường thành: ${currentSchool}`);
+      }
+    }
+
+    // Modal Control
+    const modal = document.getElementById('pledgeModal');
+    const formStep = document.getElementById('modalFormStep');
+    const certStep = document.getElementById('modalCertStep');
+
+    function openModal() {
+      updateSchoolUI();
+      modal.style.display = 'flex';
+      formStep.style.display = 'block';
+      certStep.style.display = 'none';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Form Submit Handler
+    function submitPledge(e) {
+      e.preventDefault();
+      const name = document.getElementById('inputName').value.trim();
+      const sClass = document.getElementById('inputClass').value.trim();
+      const enteredSchool = document.getElementById('inputSchool').value.trim() || DEFAULT_SCHOOL;
+      if (!name || !sClass) return;
+
+      currentSchool = enteredSchool;
+      localStorage.setItem('hvt_school_name', currentSchool);
+      updateSchoolUI();
+
+      document.getElementById('certName').innerText = name.toUpperCase();
+      document.getElementById('certClass').innerText = `Chi đoàn ${sClass} – ${currentSchool}`;
+      document.getElementById('certSchoolHeader').innerText = `ĐOÀN ${currentSchool.toUpperCase()}`;
+
+      // Tăng bộ đếm
+      let count = parseInt(localStorage.getItem('hvt_pledge_count') || '1254');
+      count++;
+      localStorage.setItem('hvt_pledge_count', count);
+      document.getElementById('statCount').innerText = count.toLocaleString();
+      document.getElementById('navCounter').innerText = count.toLocaleString() + '+';
+
+      // Chuyển bước chứng nhận
+      formStep.style.display = 'none';
+      certStep.style.display = 'block';
+
+      // Hiệu ứng pháo hoa Canvas thuần (offline)
+      runConfetti();
+    }
+
+    // Tải Giấy Chứng Nhận dưới dạng ảnh PNG bằng Canvas HD
+    function downloadCertificateImage() {
+      const studentName = (document.getElementById('certName').innerText || 'NGUYỄN VĂN AN').toUpperCase();
+      const studentClass = document.getElementById('certClass').innerText || `Chi đoàn 11A1 – ${currentSchool}`;
+      const schoolHeader = (document.getElementById('certSchoolHeader').innerText || `ĐOÀN ${currentSchool}`).toUpperCase();
+
+      showToast('Đang tạo ảnh chứng nhận...');
+
+      const canvas = document.createElement('canvas');
+      canvas.width = 1200;
+      canvas.height = 800;
+      const ctx = canvas.getContext('2d');
+
+      // 1. Nền Gradient xanh navy hoàng gia
+      const bgGrad = ctx.createLinearGradient(0, 0, 1200, 800);
+      bgGrad.addColorStop(0, '#061325');
+      bgGrad.addColorStop(0.5, '#0a2540');
+      bgGrad.addColorStop(1, '#030d1a');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, 1200, 800);
+
+      // 2. Họa tiết tia sáng nền nhẹ
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+      ctx.lineWidth = 1;
+      for (let i = 0; i < 1200; i += 40) {
+        ctx.beginPath();
+        ctx.moveTo(i, 0);
+        ctx.lineTo(1200 - i, 800);
+        ctx.stroke();
+      }
+      ctx.restore();
+
+      // 3. Khung viền đôi mạ vàng hoàng gia
+      ctx.strokeStyle = '#facc15';
+      ctx.lineWidth = 6;
+      ctx.strokeRect(30, 30, 1140, 740);
+
+      ctx.strokeStyle = '#fde047';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(45, 45, 1110, 710);
+
+      // Họa tiết góc ❖
+      const corners = [[55, 55], [1145, 55], [55, 745], [1145, 745]];
+      ctx.fillStyle = '#facc15';
+      ctx.font = '24px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      corners.forEach(([cx, cy]) => {
+        ctx.fillText('❖', cx, cy);
+      });
+
+      // 4. Header: ĐOÀN TNCS HỒ CHÍ MINH
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#e2e8f0';
+      ctx.font = '700 20px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+      ctx.fillText('ĐOÀN TNCS HỒ CHÍ MINH', 600, 110);
+
+      // Tên Đoàn Trường
+      ctx.fillStyle = '#facc15';
+      ctx.font = '800 22px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+      ctx.fillText(schoolHeader, 600, 145);
+
+      // 5. Tiêu đề lớn: CHỨNG NHẬN ĐOÀN VIÊN SỐ
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '900 48px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+      ctx.shadowBlur = 10;
+      ctx.fillText('CHỨNG NHẬN ĐOÀN VIÊN SỐ', 600, 225);
+      ctx.shadowBlur = 0;
+
+      // Đường kẻ trang trí vàng
+      ctx.fillStyle = '#facc15';
+      ctx.fillRect(450, 255, 300, 3);
+      ctx.beginPath();
+      ctx.arc(600, 256.5, 6, 0, Math.PI * 2);
+      ctx.fill();
+
+      // 6. Dòng dẫn
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '500 22px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+      ctx.fillText('Chứng nhận đồng chí:', 600, 315);
+
+      // 7. Tên học sinh (Nổi bật nhất)
+      ctx.fillStyle = '#fde047';
+      ctx.font = '900 52px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+      ctx.fillText(studentName, 600, 385);
+
+      // 8. Chi đoàn & Trường
+      ctx.fillStyle = '#bae6fd';
+      ctx.font = '700 26px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+      ctx.fillText(studentClass, 600, 445);
+
+      // 9. Nội dung vinh danh
+      ctx.fillStyle = '#e2e8f0';
+      ctx.font = 'italic 20px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+      ctx.fillText('“Đã ký cam kết thực hiện nếp sống văn minh trên không gian mạng,', 600, 520);
+      ctx.fillText('gương mẫu tuân thủ 5 quy tắc vàng và tích cực lan tỏa thông điệp tử tế.”', 600, 555);
+
+      // 10. Chân trang (Footer Certificate)
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(100, 620);
+      ctx.lineTo(1100, 620);
+      ctx.stroke();
+
+      // Thông tin bên trái
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '600 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+      ctx.fillText('Số hiệu: DVS-2026/VN', 100, 660);
+      ctx.fillStyle = '#facc15';
+      ctx.font = '700 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+      ctx.fillText('#DoanVienSo  #VanMinhTrenMang', 100, 690);
+
+      // Con dấu xác nhận bên phải
+      ctx.textAlign = 'right';
+      ctx.fillStyle = '#facc15';
+      ctx.font = '800 18px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+      ctx.fillText('BAN CHẤP HÀNH ĐOÀN', 1100, 660);
+      ctx.fillStyle = '#34d399';
+      ctx.font = '700 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+      ctx.fillText('✓ ĐÃ XÁC NHẬN ĐIỆN TỬ', 1100, 690);
+
+      // 11. Tải ảnh PNG về máy
+      try {
+        const dataUrl = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        const cleanName = studentName.replace(/[^a-zA-Z0-9\u00C0-\u1EF9]/g, '_');
+        link.download = `Chung_Nhan_Doan_Vien_So_${cleanName}.png`;
+        link.href = dataUrl;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        showToast('Đã tải ảnh chứng nhận thành công! 🎉');
+      } catch (err) {
+        showToast('Lỗi khi lưu ảnh, vui lòng thử lại!');
+      }
+    }
+
+    // Sao chép Hashtag
+    function copyTag(tag) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(tag).then(() => showToast(`Đã chép: ${tag}`));
+      } else {
+        showToast(`Hashtag: ${tag}`);
+      }
+    }
+
+    // Chia sẻ
+    function shareLink() {
+      const text = `Tôi là học sinh ${currentSchool}, vừa hoàn thành ký cam kết thực hiện Bộ quy tắc ứng xử văn minh trên không gian mạng! #DoanVienSo #VanMinhTrenMang`;
+      if (navigator.share) {
+        navigator.share({ title: 'Đoàn Viên Số', text: text, url: window.location.href }).catch(() => {});
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(text);
+        showToast('Đã sao chép lời chia sẻ vào bộ nhớ tạm!');
+      }
+    }
+
+    // Toast
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastText').innerText = msg;
+      toast.style.display = 'flex';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 2500);
+    }
+
+    // Khởi tạo trạng thái ban đầu
+    updateSchoolUI();
+    const saved = localStorage.getItem('hvt_pledge_count');
+    if (saved) {
+      document.getElementById('statCount').innerText = parseInt(saved).toLocaleString();
+      document.getElementById('navCounter').innerText = parseInt(saved).toLocaleString() + '+';
+    }
+
+    // Pháo hoa Canvas tự thân (100% Offline, nhẹ, chạy mượt mà)
+    function runConfetti() {
+      const canvas = document.getElementById('fireworksCanvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      canvas.style.display = 'block';
+
+      const pieces = [];
+      const colors = ['#0056b3', '#0284c7', '#facc15', '#ef4444', '#10b981', '#6366f1'];
+      for (let i = 0; i < 90; i++) {
+        pieces.push({
+          x: canvas.width / 2,
+          y: canvas.height / 2,
+          vx: (Math.random() - 0.5) * 16,
+          vy: (Math.random() - 0.7) * 16,
+          size: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          alpha: 1
+        });
+      }
+
+      let frame = 0;
+      function loop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pieces.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.3; // trọng lực
+          p.alpha -= 0.012;
+          ctx.save();
+          ctx.globalAlpha = Math.max(0, p.alpha);
+          ctx.fillStyle = p.color;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        });
+        frame++;
+        if (frame < 80) {
+          requestAnimationFrame(loop);
+        } else {
+          canvas.style.display = 'none';
+        }
+      }
+      loop();
+    }
+  </script>
+</body>
+</html>
