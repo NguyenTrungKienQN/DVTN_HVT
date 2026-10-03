@@ -866,7 +866,6 @@
       <div style="margin-left: auto;">
         <button class="btn-pledge-nav" onclick="openModal()">
           <span>✍️ KÝ CAM KẾT</span>
-          <span class="counter-badge" id="navCounter">1,254+</span>
         </button>
       </div>
     </div>
@@ -914,25 +913,6 @@
         <button class="hashtag-pill" onclick="copyTag('#DoanVienSo')">#DoanVienSo 📋</button>
         <button class="hashtag-pill" onclick="copyTag('#VanMinhTrenMang')">#VanMinhTrenMang 📋</button>
         <button class="hashtag-pill" onclick="copyTag('#THPTHoangVanThu')">#THPTHoangVanThu 📋</button>
-      </div>
-
-      <div class="hero-stats">
-        <div>
-          <div class="stat-num" id="statCount">1,254</div>
-          <div class="stat-label">Lượt ký cam kết</div>
-        </div>
-        <div>
-          <div class="stat-num" style="color: #0284c7;">100%</div>
-          <div class="stat-label">Chi đoàn hưởng ứng</div>
-        </div>
-        <div>
-          <div class="stat-num" style="color: #4f46e5;">5/5</div>
-          <div class="stat-label">Quy tắc vàng chuẩn mực</div>
-        </div>
-        <div>
-          <div class="stat-num" style="color: #059669;">24/7</div>
-          <div class="stat-label">Đồng hành & Lắng nghe</div>
-        </div>
       </div>
 
     </div>
@@ -1536,13 +1516,6 @@
       document.getElementById('certClass').innerText = `Chi đoàn ${sClass} – ${currentSchool}`;
       document.getElementById('certSchoolHeader').innerText = `ĐOÀN ${currentSchool.toUpperCase()}`;
 
-      // Tăng bộ đếm
-      let count = parseInt(localStorage.getItem('hvt_pledge_count') || '1254');
-      count++;
-      localStorage.setItem('hvt_pledge_count', count);
-      document.getElementById('statCount').innerText = count.toLocaleString();
-      document.getElementById('navCounter').innerText = count.toLocaleString() + '+';
-
       // Chuyển bước chứng nhận
       formStep.style.display = 'none';
       certStep.style.display = 'block';
@@ -1724,11 +1697,6 @@
 
     // Khởi tạo trạng thái ban đầu
     updateSchoolUI();
-    const saved = localStorage.getItem('hvt_pledge_count');
-    if (saved) {
-      document.getElementById('statCount').innerText = parseInt(saved).toLocaleString();
-      document.getElementById('navCounter').innerText = parseInt(saved).toLocaleString() + '+';
-    }
 
     // Pháo hoa Canvas tự thân (100% Offline, nhẹ, chạy mượt mà)
     function runConfetti() {
